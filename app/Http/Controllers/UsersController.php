@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\UserModel;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 /**
  * Class UsersController
@@ -13,11 +15,17 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return 22;
+        $all = UserModel::all();
+        foreach ($all as $item) {
+
+            $item->age = Carbon::parse($item->date_of_birth)->diffInYears(Carbon::now()) + 1;
+
+        }
+        return view('users', ['users' => $all]);
     }
 
     /**
@@ -33,7 +41,7 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,8 +52,8 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
@@ -55,7 +63,7 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,8 +74,8 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,7 +86,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
