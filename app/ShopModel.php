@@ -5,14 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class AddressModel
+ * Class ShopModel
  * @package App
- * @method static where(string $string, $id)
  * @method static find($id)
  */
-class AddressModel extends Model
+class ShopModel extends Model
 {
-    public $table = 'addresses';
+    public $table = 'shops';
     public $connection = 'mysql';
     public $timestamps = false;
 }

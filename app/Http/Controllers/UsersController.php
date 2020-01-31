@@ -50,10 +50,8 @@ class UsersController extends Controller
         $user->date_of_birth = $request->input('dob');
         $user->created_at = Carbon::now();
         $user->save();
-        return view('edit_user', [
-            'user' => $user,
-            'text' => 'success create'
-        ]);
+
+        return $this->index();
 
     }
 

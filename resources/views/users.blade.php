@@ -1,3 +1,4 @@
+<a href="{{route('users.show.create')}}"> Create new user</a>
 <table>
     <tr>
         <th>ID</th>
@@ -19,6 +20,7 @@
             <td> {{ $user->age }}</td>
             <td> {{ $user->created_at }}</td>
             <td><a href="{{route('users.one.get',['id'=>$user->id,])}}">view</a></td>
+            <td><a href="{{route('address.get',['userid'=>$user->id])}}">addresses</a></td>
         </tr>
     @endforeach
 </table>
