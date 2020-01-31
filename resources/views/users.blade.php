@@ -18,6 +18,7 @@
             <td> {{ $user->mobile_phone }}</td>
             <td> {{ $user->age }}</td>
             <td> {{ $user->created_at }}</td>
+            <td><a href="{{route('users.one.get',['id'=>$user->id,])}}">view</a></td>
         </tr>
     @endforeach
 </table>
