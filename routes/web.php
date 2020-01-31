@@ -11,8 +11,40 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', ['uses' => 'UsersController@index']);
+Route::get('/users', [
+    'uses' => 'UsersController@index',
+    'as' => 'users.all.get',
+]);
+Route::get('/users/{id}', [
+    'uses' => 'UsersController@show',
+    'as' => 'users.one.get',
+]);
+
+
+Route::post('/users/{id}', [
+    'uses' => 'UsersController@update',
+    'as' => 'users.one.post',
+]);
+
+Route::delete('/users/{id}', [
+    'uses' => 'UsersController@destroy',
+    'as' => 'users.one.delete',
+]);
+Route::get('/createuser', [
+    'uses' => 'UsersController@showCreate',
+    'as' => 'users.show.create',
+]);
+Route::post('/createuser', [
+    'uses' => 'UsersController@create',
+    'as' => 'users.one.create',
+]);
+Route::get('/address/{userid}', [
+    'uses' => 'AddressController@index',
+    'as' => 'address.get',
+]);
