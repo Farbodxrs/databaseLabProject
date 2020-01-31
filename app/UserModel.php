@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class UserModel
  * @package App
+ * @method static find(int $id)
  */
 class UserModel extends Model
 {
