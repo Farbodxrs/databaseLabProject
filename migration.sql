@@ -185,3 +185,13 @@ create definer = root@`%` trigger au_customers
     VALUES ('updated user', NOW(), NEW.id);
 END;
 
+CREATE PROCEDURE getLastDayPurchased()
+BEGIN
+
+select sum (price) as p
+from purchased where datediff(created_at, now())  < 1;
+
+END;
+DELIMITER ;
+
+

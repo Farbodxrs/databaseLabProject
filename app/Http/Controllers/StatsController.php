@@ -59,7 +59,13 @@ class StatsController extends Controller
     public function show()
     {
         $purs = PurchasedModel::where('created_at', '>', Carbon::now()->subDay())->get();
-        $pursprice = PurchasedModel::where('created_at', '>', Carbon::now()->subDay())->sum('price');
+
+
+
+        $pursprice = DB::select('call getLastDayPurchased()');
+        $pursprice = $pursprice[0]->p;
+
+
         $facs = FactorModel::where('created_at', '>', Carbon::now()->subDay())->get();
         $facs = $facs->toArray();
         $res = [];
@@ -68,6 +74,7 @@ class StatsController extends Controller
         }
         $facs = FactorReceiptModel::whereIn('factor_id', $res)->get();
         $facsprice = FactorReceiptModel::whereIn('factor_id', $res)->sum('price');
+
         return view('stats', [
             'facs' => $facs,
             'purs' => $purs,
