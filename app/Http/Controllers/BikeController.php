@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class BikeController
@@ -21,7 +22,11 @@ class BikeController extends Controller
      */
     public function index()
     {
-        $bikes = BikeModel::all();
+
+
+        $bikes = DB::select('call getAllBikes();');
+
+
         return view('bikes', [
             'bikes' => $bikes,
         ]);

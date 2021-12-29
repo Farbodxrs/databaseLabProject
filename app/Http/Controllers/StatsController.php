@@ -118,9 +118,13 @@ class StatsController extends Controller
         log1Model::where('op_time', '<', Carbon::now()->subDay())->delete();
         log2Model::where('op_time', '<', Carbon::now()->subDay())->delete();
 
-        $user = DB::select("select * from customers_log");
-        $address = DB::select("select * from addresses_log");
-//        dd($user);
+
+        $user = DB::select('call getCustomerLogs()');
+
+
+        $address = DB::select('call getAddressesLog()');
+
+
         return view('showlog', [
             'address' => $address,
             'user' => $user,

@@ -193,5 +193,19 @@ from purchased where datediff(created_at, now())  < 1;
 
 END;
 DELIMITER ;
+CREATE PROCEDURE getCustomerLogs()
+BEGIN
+select * from customers_log;
+END;
+DELIMITER ;
+CREATE PROCEDURE getAddressesLog()
+BEGIN
+select * from addresses_log;
+END;
+DELIMITER ;
 
+CREATE PROCEDURE getAllBikes()
+BEGIN
+select * from bikes;
+END;
 
