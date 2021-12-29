@@ -1,3 +1,5 @@
+<h1><a href="/">main</a></h1>
+
 <a href="{{route('users.show.create')}}"> Create new user</a>
 <table>
     <tr>

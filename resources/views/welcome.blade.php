@@ -61,6 +61,11 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        body {
+            background-image: url('{{asset('res2.jpg')}}');
+            background-size: 1700px 2024px
+        }
     </style>
 </head>
 <body>
@@ -85,14 +90,17 @@
         </div>
 
         <div class="links">
+            <a href="{{route('show.get')}}">New order</a>
+            <a href="{{route('buy.get')}}">Buy</a>
             <a href="{{route('users.all.get')}}">Users</a>
             <a href="{{route('foods.all.get')}}">Foods</a>
             <a href="{{route('bikes.all.get')}}">Bikes</a>
             <a href="{{route('shops.all.get')}}">Shops</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://vapor.laravel.com">Vapor</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
+            <a href="{{route('show.get2')}}">Purchased</a>
+            <a href="{{route('stats')}}">Statistics</a>
+            <a href="{{route('logs')}}">Logs</a>
+            <a href="{{route('tables')}}">Manage Tables</a>
+
         </div>
     </div>
 </div>

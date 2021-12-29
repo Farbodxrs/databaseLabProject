@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Monolog\Handler\RotatingFileHandler;
 
 Route::get('/', function () {
     return view('welcome');
@@ -135,4 +136,94 @@ Route::delete('/shops/{id}', [
 Route::get('/shops/{id}', [
     'uses' => 'ShopController@show',
     'as' => 'shops.one.get',
+]);
+
+
+Route::get('/buy', [
+    'uses' => 'buyController@index',
+    'as' => 'buy.get',
+]);
+
+
+Route::get('/buy/{id}', [
+    'uses' => 'buyController@buy',
+    'as' => 'buy.buy.product'
+]);
+
+
+Route::get('/purchased', [
+    'uses' => 'buyController@show',
+    'as' => 'show.get2',
+]);
+
+
+Route::get('/factor', [
+    'uses' => 'FactorController@index',
+    'as' => 'show.get',
+]);
+
+
+Route::get('/factor/{userid}', [
+    'uses' => 'FactorController@address',
+    'as' => 'show.address',
+]);
+
+Route::get('/factor/{userid}/{addid}', [
+    'uses' => 'FactorController@bike',
+    'as' => 'show.bikes',
+]);
+
+
+Route::get('/factor/{userid}/{addid}/{bikeid}', [
+    'uses' => 'FactorController@save',
+    'as' => 'save.factor',
+]);
+
+
+Route::get('/order/{factorid}', [
+    'uses' => 'FactorController@showfoods',
+    'as' => 'show.foods',
+]);
+
+Route::get('/order/{factorid}/{foodid}', [
+    'uses' => 'FactorController@addfood',
+    'as' => 'add.food',
+]);
+
+Route::get('/finish/{factorid}', [
+    'uses' => 'FactorController@finish',
+    'as' => 'order.finish',
+]);
+
+Route::post('/enteraddress', [
+    'uses' => 'FactorController@enteraddress',
+    'as' => 'enter.address',
+]);
+
+
+Route::get('/stats', [
+    'uses' => 'StatsController@show',
+    'as' => 'stats',
+]);
+
+Route::get('/logs', [
+    'uses' => 'StatsController@showlog',
+    'as' => 'logs',
+]);
+
+Route::get('/tables', [
+    'uses' => 'StatsController@showTables',
+    'as' => 'tables',
+]);
+
+
+Route::get('/delete/{id}', [
+    'uses' => 'StatsController@deleteTables',
+    'as' => 'table.delete',
+]);
+
+
+Route::get('/nigga', [
+    'uses' => 'StatsController@nigga',
+    'as' => 'nigga',
 ]);

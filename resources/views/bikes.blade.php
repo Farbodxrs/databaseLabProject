@@ -1,3 +1,4 @@
+<h1><a href="/">main</a></h1>
 <h1>Bikes list</h1>
 <table>
     <tr>

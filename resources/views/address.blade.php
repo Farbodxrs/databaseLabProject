@@ -1,3 +1,4 @@
+<h1><a href="/">main</a></h1>
 <p>addresses for user : {{$name}}</p>
 <table>
     <tr>

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\FactorModel;
+use App\FactorReceiptModel;
 use App\UserModel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UsersController
@@ -74,9 +77,26 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+//        dd('X');
         $user = UserModel::whereid($id)->first();
+        $factors = FactorModel::where('user_id', $id)->get();
+//        dd($factors);
+        $res = [];
+        foreach ($factors as $factor) {
+//            dd($factors);
+            $res [] = $factor['id'];
+        }
+//        $receipts = FactorReceiptModel::wherein('factor_id', $res)->get()->groupBy('food_name');
+        $receipts = FactorReceiptModel::wherein('factor_id', $res)->groupBy('food_name')->select('food_name',
+            DB::raw('count(*) as total'))->orderBy('total','desc')->get();
 
-        return view('edit_user', ['user' => $user]);
+//        dd($receipts);
+
+
+        return view('edit_user', [
+            'user' => $user,
+            'receipts' => $receipts
+        ]);
 
     }
 

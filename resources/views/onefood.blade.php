@@ -1,3 +1,5 @@
+<h1><a href="/">main</a></h1>
+
 <form action="{{route('foods.one.update',['id'=>$food->id])}}" method="post">
     @csrf
     ID:<br>

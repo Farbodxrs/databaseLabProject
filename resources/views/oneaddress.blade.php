@@ -1,3 +1,5 @@
+<h1><a href="/">main</a></h1>
+
 <form action="{{route('address.one.post',['id'=>$address->id])}}" method="post">
     @csrf
     ID:<br>

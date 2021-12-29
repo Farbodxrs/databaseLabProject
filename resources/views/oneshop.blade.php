@@ -1,3 +1,5 @@
+<h1><a href="/">main</a></h1>
+
 <form action="{{route('shops.one.update',['id'=>$shop->id])}}" method="post">
     @csrf
     ID:<br>

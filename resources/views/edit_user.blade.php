@@ -1,3 +1,4 @@
+<h1><a href="/">main</a></h1>
 @if(!is_null($text ?? ''))
     <p>{{$text ?? ''}}</p>
 @endif
@@ -40,3 +41,14 @@
     @method('DELETE')
     <button type="submit">delete</button>
 </form>
+
+
+
+<h3>
+    Favorite foods in order
+</h3>
+@foreach($receipts as $receipt)
+    {{$receipt->food_name}}
+    {{$receipt->total}}
+    <br>
+@endforeach

@@ -1,3 +1,4 @@
+<h1><a href="/">main</a></h1>
 <p>create new user</p>
 <form action="{{route('users.one.create')}}" method="post">
     @csrf
